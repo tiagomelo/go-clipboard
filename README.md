@@ -18,8 +18,7 @@ go get github.com/tiagomelo/go-clipboard
 |----------|----------|----------|
 | Darwin | `pbcopy` | `pbpaste` |
 | Windows | `clip.exe` | `powershell` |
-| Linux/FreeBSD/NetBSD/OpenBSD/Dragonfly| X11: `xsel`, `xclip`| X11: `xsel`, `xclip` |
-| | Wayland: `wl-copy` | Wayland: `wl-paste` |
+| Linux/FreeBSD/NetBSD/OpenBSD/Dragonfly| X11: `xsel`, `xclip` <br> Wayland: `wl-copy` | X11: `xsel`, `xclip` <br> Wayland: `wl-paste` |
 | Solaris | X11: `xsel`, `xclip`| X11: `xsel`, `xclip` |
 | Android (via Termux) | `termux-clipboard-set`| `termux-clipboard-get` |
 
