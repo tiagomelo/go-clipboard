@@ -1,4 +1,4 @@
-# clipboard
+# go-clipboard
 
 ![logo](golang-clipboard.png)
 
