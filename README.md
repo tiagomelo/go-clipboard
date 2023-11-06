@@ -12,6 +12,10 @@ It offers abilities for copying and pasting plain text.
 go get github.com/tiagomelo/go-clipboard
 ```
 
+## documentation
+
+[https://pkg.go.dev/github.com/tiagomelo/go-clipboard](https://pkg.go.dev/github.com/tiagomelo/go-clipboard)
+
 ## platforms
 
 | OS | Supported copy tools | Supported paste tools |
