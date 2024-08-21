@@ -39,7 +39,7 @@ import (
 	"fmt"
 	"os"
 
-	clipboard "github.com/tiagomelo/go-clipboard"
+	clipboard "github.com/tiagomelo/go-clipboard/clipboard"
 )
 
 func main() {
@@ -64,7 +64,7 @@ import (
 	"fmt"
 	"os"
 
-	clipboard "github.com/tiagomelo/go-clipboard"
+	clipboard "github.com/tiagomelo/go-clipboard/clipboard"
 )
 
 func main() {
