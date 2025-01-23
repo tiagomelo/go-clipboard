@@ -27,6 +27,6 @@ type clipboardTool struct {
 // New initializes and returns a new instance of clipboardTool.
 // It determines the appropriate tools to use based on the current system environment
 // and returns an error if no suitable tools are found.
-func New() (*clipboardTool, error) {
-	return newClipboardTool()
+func New(primary bool) (*clipboardTool, error) {
+	return newClipboardTool(primary)
 }

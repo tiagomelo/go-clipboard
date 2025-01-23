@@ -13,7 +13,13 @@ import (
 
 func main() {
 	c := clipboard.New()
+
+	if len(os.Args) > 0 {
+		c = clipboard.New(clipboard.ClipboardOptions{Primary: true})
+	}
+
 	text, err := c.PasteText()
+
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)

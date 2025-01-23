@@ -14,6 +14,11 @@ import (
 func main() {
 	text := "some text"
 	c := clipboard.New()
+
+	if len(os.Args) > 0 {
+		c = clipboard.New(clipboard.ClipboardOptions{Primary: true})
+	}
+
 	if err := c.CopyText(text); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
