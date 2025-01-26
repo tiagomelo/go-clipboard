@@ -64,6 +64,44 @@ var (
 			Name: termuxClipboardGet,
 		},
 	}
+
+	// same with primary selection
+	copyToolsPrimary = []*CopyTool{
+		{
+			Name:    xsel,
+			CmdArgs: []string{"--input", "--primary"},
+		},
+		{
+			Name:    xclip,
+			CmdArgs: []string{"-in", "-selection", "primary"},
+		},
+		{
+			Name:    wlcopy,
+			CmdArgs: []string{"--primary"},
+		},
+		{
+			Name: termuxClipboardSet,
+		},
+	}
+
+	pasteToolsPrimary = []*PasteTool{
+		{
+			Name:    xsel,
+			CmdArgs: []string{"--output", "--primary"},
+		},
+		{
+			Name:    xclip,
+			CmdArgs: []string{"-out", "-selection", "primary"},
+		},
+		{
+			Name:    wlpaste,
+			CmdArgs: []string{"--no-newline", "--primary"},
+		},
+		{
+			Name: termuxClipboardGet,
+		},
+	}
+
 	// lookPath is a variable holding the exec.LookPath function,
 	// used to check for the presence of a command in the system's PATH.
 	lookPath = exec.LookPath
@@ -73,9 +111,16 @@ var (
 
 // newClipboardTool selects the first available pair of
 // copy and paste tools from the predefined list.
-func newClipboardTool() (*clipboardTool, error) {
+func newClipboardTool(primary bool) (*clipboardTool, error) {
 	for i, ct := range copyTools {
-		pt := pasteTools[i]
+		var pt *PasteTool
+		if primary {
+			pt = pasteToolsPrimary[i]
+			ct = copyToolsPrimary[i]
+		} else {
+			pt = pasteTools[i]
+		}
+
 		if available := toolsAreAvailable(ct.Name, pt.Name); available {
 			return &clipboardTool{
 				CopyTool:  ct,

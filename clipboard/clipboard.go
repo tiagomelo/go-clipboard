@@ -5,7 +5,17 @@
 package clipboard
 
 // clipboard is an unexported type that implements the Clipboard interface.
-type clipboard struct{}
+type clipboard struct {
+	Primary bool
+}
+
+// internal clipboard target flag
+var usePrimary bool
+
+// exported flag container
+type ClipboardOptions struct {
+	Primary bool
+}
 
 // Clipboard is the interface that wraps the basic clipboard operations.
 type Clipboard interface {
@@ -20,8 +30,14 @@ type Clipboard interface {
 
 // New creates and returns a new Clipboard instance that can be used
 // to interact with the system clipboard.
-func New() Clipboard {
-	return &clipboard{}
+func New(opts ...ClipboardOptions) Clipboard {
+	cb := &clipboard{}
+
+	if len(opts) == 1 {
+		usePrimary = opts[0].Primary
+	}
+
+	return cb
 }
 
 // CopyText implements the Clipboard interface's CopyText method.

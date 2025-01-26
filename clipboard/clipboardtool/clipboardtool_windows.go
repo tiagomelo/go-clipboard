@@ -39,7 +39,7 @@ var (
 
 // newClipboardTool checks the availability of clipboard utilities
 // and initializes a new clipboardTool.
-func newClipboardTool() (*clipboardTool, error) {
+func newClipboardTool(primary bool) (*clipboardTool, error) {
 	if isAvailable := toolIsAvailable(copyTool.Name); !isAvailable {
 		return nil, errNoCopyUtilitiesFound
 	}

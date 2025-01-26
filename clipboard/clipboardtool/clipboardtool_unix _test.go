@@ -104,7 +104,7 @@ func Test_newClipboardTool(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.desc, func(t *testing.T) {
 			lookPath = tc.lookPathMock
-			ct, err := newClipboardTool()
+			ct, err := newClipboardTool(false)
 			if err != nil {
 				if tc.expectedError == nil {
 					t.Fatalf("expected no error, got %v", err)
