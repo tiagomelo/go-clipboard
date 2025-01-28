@@ -9,7 +9,7 @@ It offers abilities for copying and pasting plain text.
 ## installation
 
 ```
-go get github.com/tiagomelo/go-clipboard
+go get github.com/tiagomelo/go-clipboard/clipboard
 ```
 
 ## documentation
