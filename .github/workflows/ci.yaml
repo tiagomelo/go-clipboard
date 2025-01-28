@@ -1,0 +1,36 @@
+name: build-and-test
+on: [push, pull_request]
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: ['1.22', '1.23']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    name: Build
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '${{ matrix.version }}'
+      id: go
+
+    - name: checkout
+      uses: actions/checkout@v4
+
+    - name: build
+      run: go build
+
+    - name: test
+      run: make test
+
+  golangci:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 1.22
+      - uses: actions/checkout@v4
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
