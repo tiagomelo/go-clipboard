@@ -25,7 +25,7 @@ var newCmd = func(cmdName string, cmdArgs ...string) command.Command {
 // to execute the copy operation. An error is returned if the tool cannot be initialized or
 // if the TextInput method fails.
 func copyText(s string) error {
-	ct, err := clipboardtool.New()
+	ct, err := clipboardtool.New(usePrimary)
 	if err != nil {
 		return err
 	}
@@ -37,7 +37,7 @@ func copyText(s string) error {
 // It uses the clipboardtool package to determine the appropriate tool and command package
 // to execute the paste operation. It returns the pasted text and any error encountered.
 func pasteText() (string, error) {
-	ct, err := clipboardtool.New()
+	ct, err := clipboardtool.New(usePrimary)
 	if err != nil {
 		return "", err
 	}
